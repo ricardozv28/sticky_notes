@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  </head>
+  <body>
+    <h1 class='center'>Sticky-Notes</h1>
+    <hr />
+    <div class='row'>
+      <div class='col offset-m3 s12 m6'>
+        <ul class="collapsible popout" data-collapsible="accordion">
+          <li>
+            <div id="add" class="collapsible-header waves-light light-blue lighten-3">Add Notes</div>
+            <div class="collapsible-body col m12">
+              <form action='/notes' method='post'>
+                <div id="note_title" class="input-field col s6 m12">
+                  <input class="validate col offset-m1 m10 s12" type='text' name='title' />
+                  <label>Note Title</label>
+                </div>
+                <div class="input-field col s6 m12">
+                  <input class="validate col offset-m1 m10 s12" type='text' name='description' />
+                  <label>Write your note here...</label>
+                </div>
+                <button id="add_note" class='right btn btn-waves waves-light blue' type='submit'>Add</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col offset-m1 s12 m10">
+        <ul id="elements">
+          <% notes.forEach( function(note) { %>
+            <% action = '/notes/' + note.id %>
+            <li>
+              <a href=<%= action %>>
+                <form action = <%= action %> method="POST">
+                  <button class="button waves-effect waves-light red right" type="submit">x</button>
+                </form>
+                <h2 id='title-text' class="center"><%= note.title %></h2>
+                <div id='note-text'><%= note.description %></div>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src='/javascripts/main.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!--  -->
+  </body>
+</html>

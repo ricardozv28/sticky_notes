@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  </head>
+  <body>
+    <div class="row">
+    <h1 class="center"><%= note.title %></h1>
+    <hr/>
+    <div class="col offset-m2 m8 s12">
+      <% var action ="/notes/edit/" + note.id %>
+      <form action= <%=action%> method="POST">
+        <div class="input-field col s6 m12">
+          <input class="validate col offset-m1 m10 s12" type='text' name='title' value="<%= note.title %>" />
+          <label>Note Title</label>
+        </div>
+        <div class="input-field col s6 m12">
+          <input class="validate col offset-m1 m10 s12" type='text' name='description' value="<%= note.description %>" />
+          <label>Write your note here...</label>
+        </div>
+        <button class='right btn btn-waves waves-light blue' type='submit'>Update</button>
+        <button id="cancel" class='left btn btn-waves waves-light blue' href="/notes">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <!-- script -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src='/javascripts/main.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <!--  -->  </body>
+</html>
